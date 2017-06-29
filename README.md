@@ -1,0 +1,2 @@
+# dots
+zautomata dotfiles
