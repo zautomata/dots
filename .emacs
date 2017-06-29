@@ -1,4 +1,4 @@
-;; Mohamed Fouad ;; zotherstupidguy@gmail.com
+;; Mohamed Fouad ;; zautomata@gmail.com
 ;; hackspree.com
 
 ;; blog
@@ -34,7 +34,8 @@
 
 ;; list the packages you want
 (setq package-list '(better-defaults
-                     kooten-theme ;;solarized-theme
+                     solarized-theme
+                     ;;kooten-theme
                      ;;helm
                      ;;helm-projectile
                      ;;helm-ag
@@ -60,7 +61,7 @@
                      mew ;; email in emacs world 
                      elfeed  ;; emacs RSS
                      restclient
-                     ob-restclient
+                     ;;ob-restclient
                      ruby-test-mode
                      org-fstree
 		     ;; pdf-tools ;; to read pdf. https://github.com/politza/pdf-tools  
@@ -78,7 +79,8 @@
       ;; initial-major-mode 'ruby-mode)
       initial-major-mode 'c-mode)
 
-(load-theme 'solarized-dark t)
+(load-theme 'ubuntu t)
+;;(load-theme 'solarized-dark t)
 ;; (load-theme 'kooten t)
 
 ;; pdf-tools
@@ -172,7 +174,7 @@
  '( (perl . t)         
     (C . t)
     (ruby . t)
-    (shell . t)
+    ;;(shell . t)
     (python . t)
     (latex . t)
     (emacs-lisp . t)   
@@ -383,8 +385,11 @@
 ;; Cycle Buffers
 ;; (iswitchb-mode 1) ;;http://stackoverflow.com/questions/7394289/how-can-i-more-easily-switch-between-buffers-in-emacs
 ;;(global-set-key [C-right] 'next-buffer)
-;;(global-set-key [C-left] 'previous-buffer)
-(global-set-key [M-tab] 'next-buffer)
+;;(global-set-key [M-p] 'previous-buffer)
+;;(global-set-key [M-n] 'next-buffer)
+(global-set-key (kbd "M-n")  'next-buffer)
+(global-set-key (kbd "M-p")  'previous-buffer)
+;;(global-set-key (kbd "M-p")  'mode-line-other-buffer)
 ;;(global-set-key [M-backtab] 'previous-buffer)
 ;;(global-set-key [tab] 'next-buffer)
 ;;(global-set-key [backtab] 'previous-buffer)
@@ -637,7 +642,7 @@
 (setq scroll-conservatively 9001)
 
 ;; highlight current line
-(global-hl-line-mode t);
+;;(global-hl-line-mode t);
 
 
 ;;; .emacs ends here
@@ -667,3 +672,9 @@
 ;; http://stackoverflow.com/questions/22878668/emacs-org-mode-evil-mode-tab-key-not-working
 ;; (setq evil-want-C-i-jump nil)
 ;; (when evil-want-C-i-jump (define-key evil-motion-state-map (kbd "C-i") 'evil-jump-forward))
+
+(defun on-after-init ()
+  (unless (display-graphic-p (selected-frame))
+    (set-face-background 'default "unspecified-bg" (selected-frame))))
+
+(add-hook 'window-setup-hook 'on-after-init)
