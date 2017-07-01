@@ -1,0 +1,72 @@
+# coding: utf-8
+#require 'rugged'
+require 'httparty'
+require 'zip/zip'
+require 'octokit'
+require 'ssd'
+require 'language_sniffer'
+require 'fileutils'
+
+
+# hackspree allows you to study a specific user accross all the years and rounds via gitlapses.
+#agent.get("https://code.google.com/codejam/contest/scoreboard/do?cmd=GetSourceCode&contest=3264486&problem=5736519012712448&io_set_id=0&username=#{username}").save("#{username}.zip")
+#TODO delete all .zip files from the dir
+module Hackspree 
+  module Codejam
+    class Solution 
+      #include SSD::Entity
+      attr_accessor :id, :html_url, :description, :language, :author, :gist_id
+
+      def initialize files: Hash.new, description: "", language: ""
+        @description = description  
+        @language = language 
+        upload! files: files
+        #@ssd = @id
+      end
+
+      def to_hash
+        hash = {}
+        instance_variables.each {|var| hash[var.to_s.delete("@")] = instance_variable_get(var)}
+        hash
+      end
+      #  files => {file[:name] => {:content => file[:content]}}
+      # def append!
+      #  upload_solution
+      #  super
+      # end
+
+      # def upload files: Hash.new, description: "GCJ Solution", visibility: false 
+      def upload! files: Hash.new
+        ratelimit           = Octokit.ratelimit
+        ratelimit_remaining = Octokit.rate_limit.remaining
+
+        #Deprecated: Please use .rate_limit.remaining
+
+        puts "Rate Limit Remaining: #{ratelimit_remaining} / #{ratelimit}"
+        #  client = Octokit::Client.new(:login => user.username,:oauth_token => user.token)
+        client = Octokit::Client.new \
+         :client_id     => "f9cdbc8509821f8fd37d",
+         :client_secret => "a61c80fb8b0a75fc0f3d7c00937af2d6a2a2ec0e"
+        
+        #client.create_gist({:files => {'test1.html' => {:content => '<p>test</p>'}}})
+        p "uploading the files now"
+        p files
+        gist = client.create_gist({:files => files,
+                                   :description => @description,
+                                   :public => false})
+
+        #solution.files.each {|k, v| file = v}
+        #puts "[ #{file.filename} ]"
+        puts "\tID          : #{gist.id}"
+        puts "\tDescription : #{gist.description}"
+        puts "\tCreated at  : #{gist.created_at}"
+        puts "\tLanguage    : #{gist.language}"
+        puts "\tPublic      : #{gist.public}"
+        puts "\tURL         : #{gist.html_url}"
+
+        @gist_id = gist.id
+        @html_url = gist.html_url
+      end
+    end
+  end
+end

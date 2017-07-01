@@ -1,0 +1,37 @@
+# -*- mode: snippet -*-
+# name: string.searching.naive
+# key: string.searching.naive
+# --
+/*
+* string.searching.naive
+* Usage:
+* int result=naivesearch("pattern", "everywhere, patterns, i see");
+*/
+int naivesearch(char *p, char *a)
+{
+int i, j;
+int M=strlen(p);
+int N=strlen(a);
+
+for(i=0,j=0; j<M&&i<N; i++, j++)
+{
+while(a[i]!=p[j])
+{
+i-=j-1;j=0;
+}
+}
+if(j==M)
+{
+#ifdef logger 
+printf("'%s' found starting %i in '%s'\n", p, i-M, a);
+#endif
+return i-M;
+}
+else
+{
+#ifdef logger 
+printf("'%s' not found in '%s', returning -1\n", p, a);
+#endif
+return -1;
+}
+}

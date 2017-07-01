@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<string.h>
+
+#define logger 
+/*
+  #define DATASET "A-small-practice" 
+  #define DATASET "A-large-practice" 
+  #define DATASET "A-small" 
+  #define DATASET "A-large" 
+*/
+#define DATASET "sample" 
+
+void testcase(int TEST)
+{
+  scanf("%s%d",S,&K);
+  N=strlen(S);
+  if(1==1)
+    {
+      printf("Case #%d: %i\n", TEST, N);
+    }
+  else
+    {
+      printf("Case #%d: %s\n", TEST, "IMPOSSIBLE");
+    }
+
+#ifdef logger
+  printf("Log: %s %d \n",S,K);
+#endif
+}
+
+int main()
+{
+  freopen(DATASET".in", "r", stdin);
+  freopen(DATASET".out", "w", stdout);
+
+  int TEST;
+  scanf("%d", &TEST);
+  printf("%d \n",TEST);
+  for(int i=1; i<=TEST; i++)
+    {
+      testcase(i);
+    }
+
+#ifdef logger 
+  printf("%s\n", ">>>>>>>Logging::ENABLED<<<<<<<<<<");
+#endif
+  return 0;
+}
