@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: logger 
-# key: logger 
-# --
-#ifdef logger 
-  printf("%$1\n", $0);
-#endif

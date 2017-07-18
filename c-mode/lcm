@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: lcm 
+# key: lcm
+# --
+/*
+* LCM (Least Common Multiple) of two numbers is the smallest number
+* which can be divided by both numbers.
+* For example LCM of 15 and 20 is 60 and LCM of 5 and 7 is 35.
+* Usage:
+* int result=lcm(a,b);
+*/
+/* Standard C Function: Greatest Common Divisor */
+int
+gcd ( int a, int b )
+{
+int c;
+while ( a != 0 ) {
+c = a; a = b%a;  b = c;
+}
+return b;
+}
+
+/* Recursive Standard C Function: Greatest Common Divisor */
+int
+gcdr ( int a, int b )
+{
+if ( a==0 ) return b;
+return gcdr ( b%a, a );
+}
+
+// Function to return LCM of two numbers
+int lcm(int a, int b)
+{
+return (a*b)/gcd(a, b);
+}

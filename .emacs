@@ -642,7 +642,8 @@
 (setq scroll-conservatively 9001)
 
 ;; highlight current line
-;;(global-hl-line-mode t);
+(global-hl-line-mode t);
+(set-face-background 'hl-line "#3e4446")
 
 
 ;;; .emacs ends here
