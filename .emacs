@@ -34,8 +34,11 @@
 
 ;; list the packages you want
 (setq package-list '(better-defaults
-                     solarized-theme
-                     ;;kooten-theme
+                     ;; solarized-theme
+		     ;;green-screen-theme
+		     green-phosphor-theme
+		     smart-compile 
+		     ;;kooten-theme
                      ;;helm
                      ;;helm-projectile
                      ;;helm-ag
@@ -74,14 +77,55 @@
 
 (require 'better-defaults)
 
+;; C-mode conf
+;; https://truongtx.me/2013/03/10/emacs-setting-up-perfect-environment-for-cc-programming
 (setq inhibit-splash-screen t
       initial-scratch-message nil
       ;; initial-major-mode 'ruby-mode)
       initial-major-mode 'c-mode)
+(setq-default c-basic-offset 4 c-default-style "linux")
+(setq-default tab-width 4 indent-tabs-mode t)
+;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
+;;; activate ecb
+;;(require 'ecb)
+;;(require 'ecb-autoloads)
+;; ecb layouts
+;; http://ecb.sourceforge.net/docs/Changing-the-ECB-layout.html
+;;(setq ecb-layout-name "left-dir-plus-speedbar")
+;;(setq ecb-layout-name "left-analyse")
+;;(setq ecb-layout-name "left9")
+;;(setq ecb-show-sources-in-directories-buffer 'always)
+;;(setq ecb-compile-window-height 12)
+;;(global-set-key (kbd "C-e") 'ecb-goto-window-edit1)
+;;(global-set-key (kbd "C-d") 'ecb-goto-window-directories)
+;;(global-set-key (kbd "C-s") 'ecb-goto-window-sources)
+;;(global-set-key (kbd "C-m") 'ecb-goto-window-methods)
+;;(global-set-key (kbd "C-c") 'ecb-goto-window-compilation)
+;;(ecb-activate)
+;;(setq enable-recursive-minibuffers t)
+;;smart-compile
+;;(add-to-list 'smart-compile-alist);; '(c-mode  . "gcc -O2 -Wall -o %n %f"))
+;;("euler.*\\.[Cc]+[Pp]*$" . "g++ -O2 -Wall -pedantic -Werror -Wreturn-type %f -lm -lgmpxx -lgmp -o ../bin/%n && time ../bin/%n")
+;;(global-set-key (kbd "C-c c") 'smart-compile)
+(defun c ()
+  (interactive)
+  (smart-compile 1)
+  )
+(defun s ()
+  (interactive)
+  (ace-window 1)
+  )
 
-(load-theme 'ubuntu t)
+
+;; (load-theme 'ubuntu t)
 ;;(load-theme 'solarized-dark t)
 ;; (load-theme 'kooten t)
+;;(if (display-graphic-p)
+;;    (enable-theme 'solarized)
+;;    (enable-theme 'wheatgrass))
+(load-theme 'wheatgrass t)
+;;(load-theme 'green-phosphor t)
+
 
 ;; pdf-tools
 ;; (pdf-tools-install)
@@ -208,20 +252,30 @@
 (require 'evil)
 (evil-mode 1)
 
+
 ;; Typography
 (set-face-attribute 'default nil
                     :family "Source Code Pro"
                     :height 100
                     :weight 'normal
                     :width 'normal)
-;;(set-face-attribute 'default nil :height 80)
+(set-face-attribute 'default nil :height 80)
 
-;;(require 'helm)
-;;(require 'helm-projectile)
-;;(require 'helm-ag)
-;;(global-set-key (kbd "M-x") #'helm-M-x)
-;;(global-set-key (kbd "s-f") #'helm-projectile-ag)
-;;(global-set-key (kbd "s-t") #'helm-projectile-find-file-dwim)
+;; EightyColumnRule
+;; https://www.emacswiki.org/emacs/EightyColumnRule
+(add-hook 'text-mode-hook 'auto-fill-mode)
+(setq-default fill-column 80)
+;; free of trailing whitespace and to use 80-column width, standard indentations
+(require 'whitespace)
+(setq whitespace-style '(trailing lines space-before-tab
+                                  indentation space-after-tab)
+      whitespace-line-column 80)
+;;(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
+(global-whitespace-mode +1)
+
+
 
 ;; Autoclose paired syntax elements like parens, quotes, etc
 (require 'ruby-electric)
@@ -642,9 +696,11 @@
 (setq scroll-conservatively 9001)
 
 ;; highlight current line
-(global-hl-line-mode t);
-(set-face-background 'hl-line "#3e4446")
-
+;;(global-hl-line-mode t);
+;;(set-face-foreground 'hl-line "gray5")
+;;(set-face-foreground 'hl-line "#041512")
+;;(set-face-attribute 'default nil :background "gray15")
+;;(set-face-attribute 'hl-line nil :foreground nil :background "gray5")
 
 ;;; .emacs ends here
 
@@ -653,9 +709,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ecb-options-version "2.50")
  '(package-selected-packages
    (quote
-    (org-babel-eval-in-repl restclient yasnippet solarized-theme simpleclip seeing-is-believing ruby-test-mode ruby-electric robe restart-emacs quickrun pos-tip org-pomodoro org-page openwith mew magit latex-math-preview kooten-theme key-chord highlight-indentation git-timemachine git-auto-commit-mode flycheck evil-org ess elfeed csv-mode csv company color-theme chruby better-defaults avk-emacs-themes))))
+    (whitespace-cleanup-mode org-babel-eval-in-repl restclient yasnippet solarized-theme simpleclip seeing-is-believing ruby-test-mode ruby-electric robe restart-emacs quickrun pos-tip org-pomodoro org-page openwith mew magit latex-math-preview kooten-theme key-chord highlight-indentation git-timemachine git-auto-commit-mode flycheck evil-org ess elfeed csv-mode csv company color-theme chruby better-defaults avk-emacs-themes))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
