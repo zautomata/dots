@@ -83,8 +83,8 @@
       initial-scratch-message nil
       ;; initial-major-mode 'ruby-mode)
       initial-major-mode 'c-mode)
-(setq-default c-basic-offset 4 c-default-style "linux")
-(setq-default tab-width 4 indent-tabs-mode t)
+(setq-default c-basic-offset 8 c-default-style "linux")
+(setq-default tab-width 8 indent-tabs-mode t)
 ;;(define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 ;;; activate ecb
 ;;(require 'ecb)
@@ -115,6 +115,22 @@
   (interactive)
   (ace-window 1)
   )
+(add-hook 'c-mode-hook
+          (lambda ()
+            (add-to-list 'write-file-functions 'delete-trailing-whitespace)))
+(defun my-other-delete-trailing-blank-lines ()
+  "Deletes all blank lines at the end of the file, even the last one"
+  (interactive)
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-max))
+      (delete-blank-lines)
+      (let ((trailnewlines (abs (skip-chars-backward "\n\t"))))
+        (if (> trailnewlines 0)
+            (progn
+              (delete-char trailnewlines)))))))
+
 
 
 ;; (load-theme 'ubuntu t)

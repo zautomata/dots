@@ -2,6 +2,10 @@
 # name: gcj
 # key: gcj
 # --
+/*
+   Coding Style
+https://www.kernel.org/doc/html/v4.10/process/coding-style.html
+ */
 #include<stdio.h>
 #include<string.h>
 
