@@ -718,6 +718,10 @@
 ;;(set-face-attribute 'default nil :background "gray15")
 ;;(set-face-attribute 'hl-line nil :foreground nil :background "gray5")
 
+;; This instructs emacs to store the auto-saves inside the auto-save folder in the user-emacs-directory (usually ~/.emacs.d).
+(setq auto-save-file-name-transforms
+                `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+
 ;;; .emacs ends here
 
 (custom-set-variables
