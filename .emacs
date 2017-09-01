@@ -36,7 +36,8 @@
 (setq package-list '(better-defaults
                      ;; solarized-theme
 		     ;;green-screen-theme
-		     green-phosphor-theme
+		     ;;green-phosphor-theme
+		     ;;blue-mood
 		     smart-compile 
 		     ;;kooten-theme
                      ;;helm
@@ -139,8 +140,12 @@
 ;;(if (display-graphic-p)
 ;;    (enable-theme 'solarized)
 ;;    (enable-theme 'wheatgrass))
-(load-theme 'wheatgrass t)
+;;(load-theme 'wheatgrass t)
 ;;(load-theme 'green-phosphor t)
+
+;; https://github.com/emacs-jp/replace-colorthemes
+(load-theme 'blue-mood t t)
+(enable-theme 'blue-mood)
 
 
 ;; pdf-tools
@@ -722,6 +727,11 @@
 (setq auto-save-file-name-transforms
                 `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
 
+;; emacs font
+(set-frame-font "Inconsolata-18");
+;; server-start 
+(server-start)
+
 ;;; .emacs ends here
 
 (custom-set-variables
@@ -756,3 +766,5 @@
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 
 (add-hook 'window-setup-hook 'on-after-init)
+
+

@@ -1,0 +1,41 @@
+# -*- mode: snippet -*-
+# name: string_searching_bruteforce
+# key: string_searching_bruteforce
+# --
+
+// #include <string.h>
+/*
+string_searching_bruteforce searches for the occurrences of a pattern
+string p in a text string a.
+*/
+int string_searching_bruteforce(char *p, char *a)
+{
+int i;
+int j;
+int M=strlen(p);
+int N=strlen(a);
+
+for(i=0,j=0; j<M&&i<N; i++, j++)
+{
+while(a[i]!=p[j])
+{
+i-=j-1;j=0;
+}
+}
+if(j==M)
+{
+#ifdef logger 
+printf("'%s' found starting %i in '%s'\n", p, i-M, a);
+#endif
+return i-M;
+}
+else
+{
+#ifdef logger 
+printf("'%s' not found in '%s', returning -1\n", p, a);
+#endif
+return -1;
+}
+}
+
+int result=string_searching_bruteforce("pattern", "fulltext of patterns");
