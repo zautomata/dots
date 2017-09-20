@@ -68,6 +68,11 @@
                      ;;ob-restclient
                      ruby-test-mode
                      org-fstree
+                     dash
+                     dash-functional
+                     s
+                     origami
+                     ;;vimish-fold
 		     ;; pdf-tools ;; to read pdf. https://github.com/politza/pdf-tools  
 		     ))
 
@@ -78,6 +83,18 @@
 
 (require 'better-defaults)
 
+;; fold my codeblocks
+(require 'origami)
+(global-origami-mode 1)
+;;(origami-close-all-nodes 1)
+(global-set-key (kbd "C-c C-f") #'origami-show-only-node)
+
+;;(require 'vimish-fold)
+;;(vimish-fold-global-mode 1)
+;;(global-set-key (kbd "C-c h h") #'vimish-fold)
+;;(global-set-key (kbd "C-c f") #'vimish-fold-delete)
+;;(global-set-key (kbd "C-c C-f") #'vimish-fold-toggle)
+ 
 ;; C-mode conf
 ;; https://truongtx.me/2013/03/10/emacs-setting-up-perfect-environment-for-cc-programming
 (setq inhibit-splash-screen t

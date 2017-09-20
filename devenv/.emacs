@@ -1,5 +1,5 @@
-;;; Mohamed Fouad ;; zautomata@gmail.com
-;;; hackspree.com
+;; Mohamed Fouad ;; zautomata@gmail.com
+;; hackspree.com
 
 ;; blog
 ;; ref:: http://gongzhitaao.org/orgcss/ (related to making teh blog pretty)
@@ -34,10 +34,10 @@
 
 ;; list the packages you want
 (setq package-list '(better-defaults
-                     ;; solarized-theme
 		     ;;green-screen-theme
 		     ;;green-phosphor-theme
 		     ;;blue-mood
+		     color-theme-modern		     
 		     smart-compile 
 		     ;;kooten-theme
                      ;;helm
@@ -64,10 +64,15 @@
                      pos-tip  ;; https://www.topbug.net/blog/2016/11/03/emacs-display-function-or-variable-information-near-point-cursor/
                      mew ;; email in emacs world 
                      elfeed  ;; emacs RSS
-                     restclient
+                     ;;restclient
                      ;;ob-restclient
                      ruby-test-mode
                      org-fstree
+                     dash
+                     dash-functional
+                     s
+                     origami
+                     ;;vimish-fold
 		     ;; pdf-tools ;; to read pdf. https://github.com/politza/pdf-tools  
 		     ))
 
@@ -78,6 +83,18 @@
 
 (require 'better-defaults)
 
+;; fold my codeblocks
+(require 'origami)
+(global-origami-mode 1)
+;;(origami-close-all-nodes 1)
+(global-set-key (kbd "C-c C-f") #'origami-show-only-node)
+
+;;(require 'vimish-fold)
+;;(vimish-fold-global-mode 1)
+;;(global-set-key (kbd "C-c h h") #'vimish-fold)
+;;(global-set-key (kbd "C-c f") #'vimish-fold-delete)
+;;(global-set-key (kbd "C-c C-f") #'vimish-fold-toggle)
+ 
 ;; C-mode conf
 ;; https://truongtx.me/2013/03/10/emacs-setting-up-perfect-environment-for-cc-programming
 (setq inhibit-splash-screen t
@@ -132,50 +149,12 @@
             (progn
               (delete-char trailnewlines)))))))
 
-
-
-;; (load-theme 'ubuntu t)
-;;(load-theme 'solarized-dark t)
-;; (load-theme 'kooten t)
-;;(if (display-graphic-p)
-;;    (enable-theme 'solarized)
-;;    (enable-theme 'wheatgrass))
-;;(load-theme 'wheatgrass t)
-;;(load-theme 'green-phosphor t)
-
 ;; https://github.com/emacs-jp/replace-colorthemes
 (load-theme 'blue-mood t t)
 (enable-theme 'blue-mood)
 
 
-;; pdf-tools
-;; (pdf-tools-install)
 
-
-;; restclient
-;; ref: http://jakemccrary.com/blog/2014/07/04/using-emacs-to-explore-an-http-api/
-;; ref: https://www.youtube.com/watch?v=fTvQTMOGJaw
-(require 'restclient)
-
-;; ob-restclient.el - An extension to restclient.el for emacs that provides org-babel support
-;; #+BEGIN_SRC restclient
-;;   GET http://example.com
-;; #+END_SRC
-;; #+RESULTS:
-;; #+BEGIN_SRC html
-;; <!doctype html>
-;; <html>
-;; <head>
-;; ...
-;; </head>
-;; </html>
-;; #+END_SRC
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((restclient . t)))
-
-
-(require 'org-fstree)
 
 ;; flycheck
 ;; ref: http://www.flycheck.org/  
@@ -190,27 +169,6 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
-
-;; A Git Porcelain inside Emacs
-;; M-x magit-status or f5 to see git status, and in the status buffer:
-;; s to stage files
-;; c c to commit (type the message then C-c C-c to actually commit)
-;; b b to switch to another branch
-;; P u to do a git push
-;; F u to do a git pull
-;; try to press TAB
-(require 'magit)
-(global-set-key (kbd "<f5>") 'magit-status)
-
-;; git-timemachine step forward and backward through the history of a file
-;; p Visit previous historic version
-;; n Visit next historic version
-;; w Copy the abbreviated hash of the current historic version
-;; W Copy the full hash of the current historic version
-;; g Goto nth revision
-;; q Exit the time machine. 
-;; ref: https://github.com/pidu/git-timemachine 
-(require 'git-timemachine)
 
 ;; yasnippet, docs: http://joaotavora.github.io/yasnippet/
 ;;TODO create some custom org-snippet for note-taking
@@ -257,9 +215,6 @@
 (add-hook 'org-after-todo-statistics-hook 'org-summary-todo)
 
 
-;; emacs-speaks-statistics
-(require 'ess)
-
 ;; Show line numbers
 (global-linum-mode)
 (setq linum-format "%d ")
@@ -273,14 +228,6 @@
 (require 'evil)
 (evil-mode 1)
 
-
-;; Typography
-(set-face-attribute 'default nil
-                    :family "Source Code Pro"
-                    :height 100
-                    :weight 'normal
-                    :width 'normal)
-(set-face-attribute 'default nil :height 80)
 
 ;; EightyColumnRule
 ;; https://www.emacswiki.org/emacs/EightyColumnRule
@@ -296,46 +243,6 @@
 (add-hook 'prog-mode-hook 'whitespace-mode)
 (global-whitespace-mode +1)
 
-
-
-;; Autoclose paired syntax elements like parens, quotes, etc
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook 'ruby-electric-mode)
-;;(chruby "2.2.2");;TODO maybe use rbenv
-
-;;Seeing Is Believing gives us:
-;;C-. s - Run Seeing is Believing for the entire file
-;;C-. c - Clear the Seeing is Believing output
-;;C-. t - Tag a line to be "targeted" for evaluation by SiB
-;;C-. x - Run only the "tagged" lines (those with trailing "# =>" markers)
-(setq seeing-is-believing-prefix "C-.")
-(add-hook 'ruby-mode-hook 'seeing-is-believing)
-(require 'seeing-is-believing)
-
-;; inf-ruby
-;;Use C-c C-s to launch the inf-ruby process.
-;;Use C-x o to switch to the inf-ruby pane and try running some random ruby snippets as you normally would from IRB or pry.
-;;Go back to your Ruby buffer, select (by highlighting) a chunk of code, and use C-c C-r to push that Ruby code into the IRB session.
-;;For example, try defining a class in your Ruby buffer, select the whole buffer, run C-c C-r, then swap over to the inf-ruby buffer and instantiate an instance of your class. Pretty cool!
-;;Alternatively, use C-c M-r to run a selected chunk of code and automatically go to the ruby buffer
-;;Finally, use helm-M-x (which we bound earlier to the default M-x keybinding) to search for âruby sendâ and see what other default bindings inf-ruby gives us.
-;;If you do a lot of work in Rails or Sinatra, check out the commands inf-ruby-console-rails and inf-ruby-console-racksh. Using these commands inf-ruby can start a console session in the environment of your web project.
-(autoload 'inf-ruby-minor-mode "inf-ruby" "Run an inferior Ruby process" t)
-(add-hook 'ruby-mode-hook 'inf-ruby-minor-mode)
-
-;; ruby-test-mode
-(require 'ruby-test-mode)
-(add-hook 'ruby-mode-hook 'ruby-test-mode)
-;; a smooth hook for ruby-test-mode
-(add-hook 'compilation-finish-functions
-          (lambda (buf strg)
-            (switch-to-buffer-other-window "*compilation*")
-            (read-only-mode)
-            (goto-char (point-max))
-            (local-set-key (kbd "q")
-                           (lambda () (interactive) (quit-restore-window)))))
-;;NOTE added by me
-;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 ;;Exit insert mode by pressing k and then j quickly
 (setq key-chord-two-keys-delay 0.5)
@@ -397,66 +304,6 @@
 (defalias 'redo 'undo-tree-redo)
 (global-set-key (kbd "C-S-z") 'redo)
 
-;; http://orgmode.org/worg/org-tutorials/org-plot.html
-(local-set-key "\M-\C-g" 'org-plot/gnuplot)
-
-;; ElDoc - part of emacs
-;; https://www.emacswiki.org/emacs/ElDoc
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode)
-(add-hook 'ielm-mode-hook 'turn-on-eldoc-mode)
-                                        ;(defun my-eldoc-display-message (format-string &rest args)
-                                        ;  "Display eldoc message near point."
-                                        ;  (when format-string
-                                        ;    (pos-tip-show (apply 'format format-string args))))
-                                        ;(setq eldoc-message-function #'my-eldoc-display-message)
-
-;; https://github.com/dgutov/robe
-(add-hook 'ruby-mode-hook 'robe-mode)
-
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
-
-;; Turn on eldoc in ruby files to display info about the
-;; method or variable at point
-(add-hook 'ruby-mode-hook 'eldoc-mode)
-
-;; Display Time
-(display-time-mode 1)
-(defface egoge-display-time
-  '((((type x w32 mac))
-     ;; #060525 is the background colour of my default face.
-     (:foreground "#060525" :inherit bold))
-    (((type tty))
-     (:foreground "blue")))
-  "Face used to display the time in the mode line.")
-;; This causes the current time in the mode line to be displayed in
-;; `egoge-display-time-face' to make it stand out visually.
-(setq display-time-string-forms
-      '((propertize (concat " " 24-hours ":" minutes " ")
-                    'face 'egoge-display-time)))
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (hs-minor-mode 1) ;; Enables folding
-            (modify-syntax-entry ?: "."))) ;; Adds ":" to the word definition
-
-;; erc - emacs IRC
-(setq erc-log-channels-directory "~/.erc/logs/")
-
-;; log files automatically written when you part a channel (or quit), add the following line:
-(setq erc-save-buffer-on-part t)
-
-;; (defadvice save-buffers-kill-emacs (before save-logs (arg) activate)
-;; (save-some-buffers t (lambda () (when (eq major-mode 'erc-mode) t))))
-
-;; log on channel activity
-;; (setq erc-save-buffer-on-part nil
-;;     erc-save-queries-on-quit nil
-;;   erc-log-write-after-send t
-;; erc-log-write-after-insert t)
-
-
 ;; Cycle Buffers
 ;; (iswitchb-mode 1) ;;http://stackoverflow.com/questions/7394289/how-can-i-more-easily-switch-between-buffers-in-emacs
 ;;(global-set-key [C-right] 'next-buffer)
@@ -481,13 +328,6 @@
 ;; (global-set-key [(shift right)] 'windmove-right)        ; move to right window
 ;; (global-set-key [(shift up)] 'windmove-up)              ; move to upper window
 ;; (global-set-key [(shift down)] 'windmove-down)          ; move to lower window
-
-;; RSS via ElFeed
-(setq elfeed-feeds
-      '("https://www.upwork.com/ab/feed/jobs/rss?contractor_tier=1&verified_payment_only=1&q=rails"
-        "https://www.upwork.com/ab/feed/jobs/rss?contractor_tier=1&verified_payment_only=1&q=microservices"
-        ))
-
 
 ;; M-x org-publish-project then Publish project: org
 ;; this publishes my project perfectly!
@@ -633,22 +473,6 @@
       ))) ;; snip
 
 
-
-
-
-;; Figure out what is a Journal and if it is a nice thing to turn my blog into a journal with timestamps or not?
-;; ("j" "Journal entry" entry (file+datetree "~/org/journal.org") (file "~/.emacs.d/org~templates/journal.orgcaptmpl"))
-
-;; TODO Select-from-list, use this to supercharge competitive programming practices.
-;; %^{Tidbit type|quote|zinger|one-liner|textlet}
-;; ("b" "Tidbit: quote, zinger, one-liner or textlet" entry
-;;  (file+headline org-default-notes-file "Tidbits")
-;;  (file "~/.emacs.d/org-templates/tidbit.orgcaptmpl")
-;; )
-
-
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; How to make tabs :)
 ;; http://blog.binchen.org/posts/easy-indentation-setup-in-emacs-for-web-development.html 
@@ -668,41 +492,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; problems.el sourcecode here, should be extracted and deployed to MELPA or similar later on
-;;; problems.el aims to interact with competitive programming websites and 
-;; require restclient
-;; very helpful emacsrocks video about restclient https://www.youtube.com/watch?v=fTvQTMOGJaw
-;;(require 'restclient)
-;; (defun json-read-file (file)
-;; "Read the first JSON object contained in FILE and return it."
-;; (with-temp-buffer
-;; (insert-file-contents file)
-;; (goto-char (point-min))
-;;    (json-read)))
-
-(require 'json)
-;; (setq data (json-read-from-string " "))
-
-
-;; this saves the restclient response with the extenstion .http, could be useful!
-;; source: https://noahfrederick.com/log/restclient-for-emacs
-;; (use-package restclient  :mode ("\\.http\\'" . restclient-mode))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; problems.el ends here
-
 ;; show column number
 (setq column-number-mode t)
 
@@ -711,60 +500,17 @@
 
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 
-;; (setq-default auto-fill-function 'do-auto-fill)
 
 ;; to scroll a single line at a time
 (setq scroll-conservatively 9001)
-
-;; highlight current line
-;;(global-hl-line-mode t);
-;;(set-face-foreground 'hl-line "gray5")
-;;(set-face-foreground 'hl-line "#041512")
-;;(set-face-attribute 'default nil :background "gray15")
-;;(set-face-attribute 'hl-line nil :foreground nil :background "gray5")
 
 ;; This instructs emacs to store the auto-saves inside the auto-save folder in the user-emacs-directory (usually ~/.emacs.d).
 (setq auto-save-file-name-transforms
                 `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
 
 ;; emacs font
-(set-frame-font "Inconsolata-12");
+(set-frame-font "Inconsolata-18");
 ;; server-start 
 (server-start)
 
 ;;; .emacs ends here
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.50")
- '(package-selected-packages
-   (quote
-    (whitespace-cleanup-mode org-babel-eval-in-repl restclient yasnippet solarized-theme simpleclip seeing-is-believing ruby-test-mode ruby-electric robe restart-emacs quickrun pos-tip org-pomodoro org-page openwith mew magit latex-math-preview kooten-theme key-chord highlight-indentation git-timemachine git-auto-commit-mode flycheck evil-org ess elfeed csv-mode csv company color-theme chruby better-defaults avk-emacs-themes))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
-;;; 
-;; http://emacs.stackexchange.com/questions/28222/how-to-make-tab-work-in-org-mode-when-combined-with-evil-mode 
-;;(evil-define-key 'normal org-mode-map (kbd "<tab>") #'org-cycle)
-;; (evil-define-key 'insert org-mode-map (kbd "<tab>") #'self-insert-command);
-
-
-;; trying to fix tab in org-mode while in evil mode
-;; http://stackoverflow.com/questions/22878668/emacs-org-mode-evil-mode-tab-key-not-working
-;; (setq evil-want-C-i-jump nil)
-;; (when evil-want-C-i-jump (define-key evil-motion-state-map (kbd "C-i") 'evil-jump-forward))
-
-(defun on-after-init ()
-  (unless (display-graphic-p (selected-frame))
-    (set-face-background 'default "unspecified-bg" (selected-frame))))
-
-(add-hook 'window-setup-hook 'on-after-init)
-
-
