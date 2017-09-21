@@ -72,6 +72,7 @@
                      dash-functional
                      s
                      origami
+                     neotree
                      ;;vimish-fold
 		     ;; pdf-tools ;; to read pdf. https://github.com/politza/pdf-tools  
 		     ))
@@ -82,6 +83,23 @@
     (package-install package)))
 
 (require 'better-defaults)
+
+;;neotree
+(require 'neotree)
+(global-set-key [f2] 'neotree-toggle)
+(setq neo-smart-open t)
+(add-hook 'after-init-hook #'neotree-toggle)
+(add-hook 'neotree-mode-hook
+          (lambda ()
+            (define-key evil-normal-state-local-map (kbd "TAB") 'neotree-enter)
+            (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
+            (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
+            (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
+;;(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
+;;(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
+;;(evil-define-key 'normal neotree-mode-map (kbd "q") 'neotree-hide)
+;;(evil-define-key 'normal neotree-mode-map (kbd "RET") 'neotree-enter)
 
 ;; fold my codeblocks
 (require 'origami)
@@ -335,9 +353,9 @@
 (setq org-publish-project-alist
       '(
         ("org-notes"
-         :base-directory "~/Opensource/zotherstupidguy.github.io/org"
+         :base-directory "~/Opensource/zautomata.github.io/org"
          :base-extension "org"
-         :publishing-directory  "~/Opensource/zotherstupidguy.github.io/public"
+         :publishing-directory  "~/Opensource/zautomata.github.io/public"
          :recursive t
          :publishing-function org-html-publish-to-html
          :headline-levels 4             ; Just the default for this project.
@@ -371,14 +389,14 @@
          :with-toc nil
          :with-latex t
          
-         (setf user-full-name "zotherstupidguy")
-         (setf user-mail-address "zotherstupidguy@gmail.com")
+         (setf user-full-name "zautomata")
+         (setf user-mail-address "zautomata@gmail.com")
          )
 
         ("org-static"
-         :base-directory "~/Opensource/zotherstupidguy.github.io/org"
+         :base-directory "~/Opensource/zautomata.github.io/org"
          :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-         :publishing-directory  "~/Opensource/zotherstupidguy.github.io/public"
+         :publishing-directory  "~/Opensource/zautomata.github.io/public"
          :recursive t
          :publishing-function org-publish-attachment
          )
@@ -417,7 +435,7 @@
 (define-key global-map "\C-cc" 'org-capture)
 ;; force UTF-8
 (setq org-export-coding-system 'utf-8)
-(setq org-default-notes-file "~/Opensource/zotherstupidguy.github.io/org/index.org")
+(setq org-default-notes-file "~/Opensource/zautomata.github.io/org/index.org")
 
 ;; configure org-capture templates
 (setq org-capture-templates
@@ -468,7 +486,7 @@
       ("c" "codeforces" ;; hotkey
        entry ;;type
        (file+headline org-default-notes-file "Problems")
-       (file "~/Opensource/zotherstupidguy.github.io/org/templates/codeforces.orgcaptmpl")
+       (file "~/Opensource/zautomata.github.io/org/templates/codeforces.orgcaptmpl")
        
       ))) ;; snip
 
