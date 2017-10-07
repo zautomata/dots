@@ -1,0 +1,13 @@
+{
+	"Ports": [
+	{
+		"Port Code": "AMLWN", 
+			"Port Name": "Gyumri", 
+			"Country": "Armenia"
+	},
+	{
+		"Port Code": "AMVZR", 
+		"Port Name": "Vanadzor", 
+		"Country": "Armenia"}
+	]
+}

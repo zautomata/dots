@@ -1,0 +1,168 @@
+# coding: utf-8
+#require 'rugged'
+require 'httparty'
+require 'zip/zip'
+require 'octokit'
+#require 'ssd'
+require 'language_sniffer'
+require 'fileutils'
+require_relative './utils'
+require_relative './solution'
+
+
+=begin
+ hackspree allows you to study a specific user accross all the years
+ and rounds via gitlapses.
+=end
+
+=begin
+# agent.get("https://code.google.com/codejam/contest/scoreboard/do?cmd=\
+GetSourceCode&contest=3264486&problem=5736519012712448&io_set_id=0&username=\
+#{username}").save("#{username}.zip")
+=end
+
+#TODO delete all .zip files from the dir
+module Hackspree 
+  module Codejam
+    module Crawler
+
+      def self.download_solution_zip(contest_id: nil,
+                                     problem_id: nil,
+                                     username: nil )
+
+        path = "solutions/"+ contest_id + "/" + problem_id+ "/" + username
+        #File.open("solutions/#{contest_id}/#{problem_id#/{username}.zip", "wb") do |f| 
+        File.open("#{path}.zip", "wb") do |f| 
+          url = "https://code.google.com/codejam/contest/scoreboard/do?cmd=GetSourceCode&contest=#{contest_id}&problem=#{problem_id}&io_set_id=1&username=#{username}"
+          p "logging: zip #{url}"
+          f.write HTTParty.get(url).body
+
+          #f.write HTTParty.get("http://code.google.com/codejam/contest/scoreboard/do?cmd=GetSourceCode&contest=3264486&problem=5736519012712448&io_set_id=1&username=#{username}").body
+        end
+        #TODO if everything succeed then return path else raise exception or whatever!
+        return path
+      end
+
+      def self.unzip_solution_zip(path: nil, contest_id: nil, problem_id: nil, username: nil)
+        #if !(File.size? "#{path}.zip") then
+        p "zip file not empty!!"
+        Hackspree::Codejam::Utils.unzip_file("#{path}.zip", "#{path}")
+
+        files = Hash.new 
+        ext = ""
+        language = ""
+
+        #Dir["solutions/#{username}/*"].each do |file_name|
+        #  unzip_file(file_name, "solutions/#{username}")
+        #  FileUtils.remove_dir file_name
+        #end
+        Dir["#{path}/*"].each do |file_name|
+          p "logging: file_name #{file_name}"
+          #begin
+            #NOTE it skips the solutions with nested zips 
+            break if File.extname(file_name) == '.zip'
+            
+            if LanguageSniffer.detect(file_name).language.nil? then
+              language = "plaintext"
+            else
+              language = LanguageSniffer.detect(file_name).language.name
+            end
+
+            file = File.open("#{file_name}", "rb")
+            content =""
+            content += "// Copyright #{username} Codejam Contest Id: #{contest_id}, Problem Id: #{problem_id}\n"
+            content += "// Provided by hackspree.com\n\n"
+            content += file.read
+            #p file_name = File.extname File.basename(file_name)
+            p ext = File.extname(file_name)
+            files["#{username}"+ext] = {:content => content.force_encoding("ISO-8859-1").encode("UTF-8").force_encoding(Encoding::UTF_8), :language => language} 
+          #next if File.directory? file_name 
+          #rescue
+          #  puts "rescue clause........."
+          #else
+          #  puts "else clause........"
+          #end
+
+
+          if !files.empty? then
+            p "files ----------------------------------"
+            p files
+            #ext.slice!(0)
+            p "langauge is ................"
+            p language
+
+            solution = Hackspree::Codejam::Solution.new(
+              files: files,
+              description: "Site: CodeJam, Contest Id: #{contest_id}, Problem Id:#{problem_id}, Username: #{username}",
+              language: language
+            )
+            solution.id = "#{contest_id}_#{problem_id}_#{language}_#{username}"
+            solution.author = username
+
+            solutions = []
+
+            #p "database contains: ..................................................................." 
+            #p SSD.read("hackspree::codejam::solutions::#{contest_id}::#{problem_id}", "#{language}")
+            #if (SSD.read("hackspree::codejam::solutions::#{contest_id}::#{problem_id}", "#{language}")!= nil) then
+            #  solutions = SSD.read("hackspree::codejam::solutions::#{contest_id}::#{problem_id}", "#{language}")
+            #end
+
+            solutions << solution.to_hash
+            solutions.uniq!
+            SSD.write("hackspree::codejam::solutions::#{contest_id}::#{problem_id}", "#{language}", solutions)
+          end
+        end
+        #FileUtils.remove_dir 'solutions'
+      end
+
+      
+      # API::search endpoint utilize index.ssd THEN
+      # choose an index for the crawler to crawl the solutions for it. 
+      # Only contest_id and problem_id to get all the solutions for all the users crawled,
+      # or contest_id, problem_id, and username to get specific user crawled
+      def self.solutions contest_id: nil, problem_id: nil, username: nil
+        url =  "https://code.google.com/codejam/contest/#{contest_id}/scoreboard/do/?cmd=GetScoreboard&contest_id=#{contest_id}&show_type=all&start_pos=31"
+        p "logging url: #{url}"
+        response = HTTParty.get url
+
+        puts response.body, response.code, response.message, response.headers.inspect
+        data = eval(response.body)
+        p "got the data form codejam"
+        p "data: #{data}"
+
+        if username.nil? && !data[:rows].nil? then
+          data[:rows].each do |d|
+            p "logging: each data row #{d}"
+            FileUtils.mkdir_p "solutions/#{contest_id}/#{problem_id}"
+            username = d[:n]
+            p username
+
+
+            path = download_solution_zip(contest_id: contest_id, problem_id: problem_id, username: username)
+
+            if !(File.zero? "#{path}.zip") then
+              unzip_solution_zip(path: path, contest_id: contest_id, problem_id: problem_id, username: username)
+            else
+              p "zip file is empty!"
+            end
+
+          end
+        else
+          p "data[:rows] is nil? or username: #{username} is given so use the .ssd(s) to get a specific user.!"
+        end
+      end
+    end
+  end
+end
+
+#contest_id = "3264486"
+#problem_id = "5736519012712448"
+#Hackspree::Codejam.crawler(contest_id: contest_id, problem_id: problem_id)
+#Hackspree::Codejam.indexer
+
+
+#SSD.write("hackspree::solutions", "Year_Round_Level_#{language}", solution.to_hash)
+#solution.append!
+
+#response = HTTParty.get "https://code.google.com/codejam/contest/3264486/scoreboard/do/?cmd=GetScoreboard&contest_id=3264486&show_type=all&start_pos=1&csrfmiddlewaretoken=MDhiZDA1OThiMWEwOGQyZWQ0NjRkYzgwNjZmYTEyOTF8MTE3OTI2MzUyODM2NDczODY2NjA2fDE0OTI3MDk1MTA5ODc3MzA%3D"
+

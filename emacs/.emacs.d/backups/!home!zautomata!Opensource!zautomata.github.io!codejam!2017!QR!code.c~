@@ -1,0 +1,29 @@
+/*
+  Coding Style
+  https://www.kernel.org/doc/html/v4.10/process/coding-style.html
+*/
+
+#include<stdio.h>
+#include<string.h>
+
+int main()
+{
+        int i, N=100;
+        for (i = 0; i < N; ++i) {
+                int x;
+                x = i + x;
+                //int *p = &x;
+                printf("%i times, %d \n", i, &x);
+        }
+
+        for (i = 0; i < N; ++i) {
+                printf(
+                        "exact font for 80col splits the window\
+ into two screens! \n"
+                        );
+                printf("somthing" ,a0,a1);
+                printf("somthing %i",x);
+        }
+
+        return 0;
+}

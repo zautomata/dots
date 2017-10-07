@@ -1,0 +1,87 @@
+;;; -*- coding: utf-8 -*-
+
+;; ----- ido-last-directory-list -----
+(
+ ("/home/zautomata/repocode/" . "PageRank/")
+ ("/home/zautomata/repocode/libwebsockets/" . "lib/")
+ ("/home/" . "zautomata/")
+ ("/" . "home/")
+ ("/home/zautomata/" . "Opensource/")
+ ("/home/zautomata/Opensource/hackspree/lib/hackspree/" . "codejam/")
+ ("/home/zautomata/Opensource/hackspree/lib/" . "hackspree/")
+ ("/home/zautomata/repocode/redis-stable/" . "src/")
+)
+
+;; ----- ido-work-directory-list -----
+(
+ "/home/zautomata/repocode/jq/src/"
+ "/home/zautomata/"
+ "/home/zautomata/repocode/PageRank/"
+ "/home/zautomata/repocode/darknet/src/"
+ "/home/zautomata/repocode/libwebsockets/lib/"
+ "/home/zautomata/repocode/libwebsockets/"
+ "/home/zautomata/i3/"
+ "/home/zautomata/Opensource/hackspree.c/"
+ "/home/zautomata/repocode/mongoose/examples/simple_crawler/"
+ "/home/zautomata/Opensource/hackspree/lib/hackspree/codejam/"
+ "/home/zautomata/repocode/redis-stable/src/"
+ "/home/zautomata/repocode/redis-stable/"
+)
+
+;; ----- ido-work-file-list -----
+(
+ "bytecode.h"
+ ".emacs"
+ "algorithm.c"
+ "activation_layer.c"
+ "Makefile"
+ "matrix.c"
+ "README"
+ "smtp.c"
+ "FindLibWebSockets.cmake"
+ "Kconfig"
+)
+
+;; ----- ido-dir-file-cache -----
+(
+ ("/home/zautomata/repocode/jq/src/" (22981 27942 599893 46000) "exec_stack.h" "parser.y" "builtin.jq" "linker.h" "linker.c" "builtin.c" "inject_errors.c" "parser.c" "jv_parse.c" "parser.h" "jq_test.c" "bytecode.c" "locfile.h" "compile.c" "lexer.h" "jv_alloc.h" "jv_file.c" "jv_dtoa.h" "jv_print.c" "./" "execute.c" "jq.h" "main.c" "lexer.c" "jq_parser.h" "../" "jv_unicode.h" "locfile.c" "util.c" "jv.h" "builtin.h" "jv_dtoa.c" "lexer.l" "compile.h" "jv.c" "util.h" "bytecode.h" "jv_alloc.c" "libm.h" "jv_aux.c" "jv_utf8_tables.h" "opcode_list.h" "jv_unicode.c")
+
+ ("/home/zautomata/repocode/darknet/src/" (22979 65079 813503 507000) "batchnorm_layer.c" "local_layer.c" "normalization_layer.c" "convolutional_kernels.cu" "route_layer.h" "dropout_layer_kernels.cu" "local_layer.h" "image.c" "crnn_layer.c" "blas.h" "lstm_layer.c" "gru_layer.h" "convolutional_layer.h" "list.c" "compare.c" "batchnorm_layer.h" "list.h" "option_list.c" "convolutional_layer.c" "classifier.h" "maxpool_layer.c" "demo.c" "parser.c" "detection_layer.c" "deconvolutional_kernels.cu" "tree.c" "col2im.h" "rnn_layer.c" "network_kernels.cu" "parser.h" "data.c" "maxpool_layer.h" "tree.h" "activations.c" "deconvolutional_layer.h" "route_layer.c" "demo.h" "rnn_layer.h" "layer.h" "reorg_layer.c" "matrix.h" "blas_kernels.cu" "crnn_layer.h" "maxpool_layer_kernels.cu" "region_layer.c" "activation_layer.h" "softmax_layer.h" "gru_layer.c" "image.h" "crop_layer_kernels.cu" "im2col_kernels.cu" "deconvolutional_layer.c" "./" "avgpool_layer.h" "utils.c" "cost_layer.c" "col2im.c" "gemm.c" "im2col.h" "dropout_layer.c" "network.c" "connected_layer.h" "cost_layer.h" "../" "crop_layer.h" "detection_layer.h" "shortcut_layer.c" "box.h" "avgpool_layer_kernels.cu" "option_list.h" "shortcut_layer.h" "#activation_layer.c#" "box.c" "cuda.h" "avgpool_layer.c" "network.h" "softmax_layer.c" "crop_layer.c" "blas.c" "utils.h" "connected_layer.c" "activations.h" "lstm_layer.h" "normalization_layer.h" "activation_kernels.cu" "stb_image_write.h" "matrix.c" "col2im_kernels.cu" "region_layer.h" "gemm.h" "dropout_layer.h" "reorg_layer.h" "im2col.c" "cuda.c" "stb_image.h" ".#col2im.c" "layer.c" "activation_layer.c" "data.h")
+
+ ("/home/zautomata/" (22979 63194 637736 830000) ".bundle/" "Pictures/" ".zsh-update" ".nano/" ".weechat/" "cronjob" ".gnupg/" ".xsession-errors.old" ".xinputrc" ".gitconfig" ".bashrc" ".gem/" ".gnome2_private/" ".emacs.d/" ".pam_environment" ".Xauthority" ".gnome2/" ".mozilla/" "GoogleCodeJamCurriculum/" ".xsession-errors" ".profile" ".zcompdump" "Downloads/" "examples.desktop" ".gnome/" ".gconf/" ".pki/" ".local/" ".config/" ".dmrc" "Videos/" "i3/" "Templates/" ".elfeed/" ".cache/" "Public/" "./" "Music/" ".emacs~" "../" ".emacs" ".zsh_history" ".dbus/" "Opensource/" ".ICEauthority" "Desktop/" ".bash_logout" "repocode/" "mpv-shot0001.jpg" ".bash_history" ".zshrc" ".compiz/" "#.emacs#" ".ssh/" "Documents/" ".wget-hsts" ".oh-my-zsh/" ".zcompdump-puremathematics-5.1.1" ".sudo_as_admin_successful" ".xemacs")
+
+ ("/home/zautomata/repocode/darknet/" (22978 18046 105220 171000) "examples/" "LICENSE.gen" "data/" "LICENSE.fuck" "cfg/" "README.md" "src/" ".gitignore" "LICENSE" "./" "../" "LICENSE.mit" "Makefile" "LICENSE.v1" "python/" ".git/" "scripts/" "include/" "LICENSE.gpl" "LICENSE.meta")
+
+ ("/home/zautomata/Opensource/hackspree.c/" (22979 51281 962796 783000) "examples/" "data/" "README.md" "src/" ".gitignore" "test/" "LICENSE" "./" "../" "Makefile" "conf/" ".git/" "scripts/" "include/")
+
+ ("/home/zautomata/repocode/PageRank/" (22979 59346 997613 390000) "vector.c" "vector.h" "algorithm.c" ".gitignore" "matrix.h" "minunit.h" "./" "utils.c" "main.c" "../" "Makefile" "README" ".git/" "utils.h" "algorithm.h" "matrix.c" "tests.h")
+
+ ("/home/zautomata/repocode/" (22979 58918 969828 32000) "hackerrank/" "ulfius/" "mongoose/" "libwebsockets/" "libdeep/" "kore/" "unrealircd/" "ircd-seven/" "git/" "hiredis/" "./" "darknet/" "insertionsort.c" "../" "ngircd/" "PageRank/" "code" "code.c" "SirLogsalot/" "slre/" "redis-stable.tar.gz" "redis-stable/" "genann/")
+
+ ("/home/zautomata/Opensource/" (22977 62481 281553 944000) "dots/" "hackspree.github.io/" "hackspree.c/" "hackspree/" "yasnippet-snippets/" "./" "../" ".changeCapstoCtrl.txt.swp" "zautomata.github.io/")
+
+ ("/home/zautomata/repocode/libwebsockets/lib/" (22979 16711 74511 325000) "lejp.h" "client-handshake.c" "lextable.h" "minihuf.c" "pollfd.c" "service.c" "extension-permessage-deflate.h" "libev.c" "libevent.c" "lws-plat-esp32.c" "getifaddrs.c" "lejp-conf.c" "output.c" "private-libwebsockets.h" "rewrite.c" "lextable-strings.h" "server-handshake.c" "client.c" "minilex.c" "handshake.c" "http2.c" "parsers.c" "libuv.c" ".gitignore" "server.c" "client-parser.c" "lws-plat-esp8266.c" "getifaddrs.h" "ranges.c" "alloc.c" "fops-zip.c" "daemonize.c" "./" "extension.c" "lws-plat-optee.c" "mbedtls_wrapper/" "../" "hpack.c" "huftable.h" "libwebsockets.c" "romfs.h" "ssl.c" "ssl-server.c" "lws-plat-win.c" "context.c" "lws-genhash.c" "ssl-client.c" "libwebsockets.h" "header.c" "romfs.c" "smtp.c" "extension-permessage-deflate.c" "base64-decode.c" "ssl-http2.c" "lws-plat-unix.c" "sha-1.c" "lejp.c")
+
+ ("/home/zautomata/repocode/libwebsockets/" (22979 16711 114497 441000) "cmake/" "README.problems.md" "cross-aarch64.cmake" "mainpage.md" "cross-esp32.cmake" "contrib/" "README.esp32.md" ".travis.yml" "README.lwsws.md" "doc-assets/" "Android.mk" "module.json" "README.md" "FindLibWebSockets.cmake" "README.generic-sessions.md" ".gitignore" "cross-ming.cmake" "README.esp8266.md" "release-checklist" "lwsws/" "libwebsockets.spec" "README.lws-meta.md" "LICENSE" "README.coding.md" "./" "cross-arm-linux-gnueabihf.cmake" "README.test-apps.md" "lws_config.h.in" "component.mk" "appveyor.yml" "libwebsockets.dox" "Kconfig" "changelog" "../" "README.generic-table.md" "CMakeLists.txt" "lib/" "plugins/" "test-server/" ".git/" "scripts/" "plugin-standalone/" "cross-openwrt-makefile" "win32port/" "lws_config_private.h.in" "autobahn-test.sh" "README.build.md" "travis_install.sh")
+
+ ("/home/" (22955 56562 693579 158000) "zautomata/" "./" "../")
+
+ ("/home/zautomata/i3/" (22977 5075 758509 325000) "workspace-2.json" "workspace-6.json" "#workspace-1.json#" "workspace-3.json" "./" "workspace-4.json" "../" "workspace-1.json" "config")
+
+ ("/home/zautomata/repocode/SirLogsalot/" (22978 16408 238871 94000) "#hackspree.log.txt" "#WatchPeopleCode.log.txt" "##math.log.txt" "sirlogsalot" "README.md" "#openbsd.log.txt" "#ruby.log.txt" "#WatchCodeTest.log.txt" ".gitignore" "##namespace.log.txt" "LICENSE" "./" "../" "Makefile" "sirlogsalot.c" "bot.log.txt" "##algorithms.log.txt" ".git/" "config.txt")
+
+ ("/home/zautomata/repocode/redis-stable/" (22965 44907 251206 435000) "sentinel.conf" "deps/" "00-RELEASENOTES" "CONTRIBUTING" "runtest" "MANIFESTO" "COPYING" "runtest-sentinel" "README.md" "src/" "runtest-cluster" ".gitignore" "INSTALL" "redis.conf" "./" "../" "Makefile" "utils/" "BUGS" "tests/")
+
+ ("/home/zautomata/repocode/redis-stable/src/" (22965 44847 469943 609000) "lzf_d.o" "pubsub.c" "module.c" "redis-trib.rb" "crc16.o" "t_list.o" "hyperloglog.c" "crc64.o" "atomicvar.h" "cluster.h" "redismodule.h" "release.h" "aof.o" "ziplist.c" "geohash.h" "debugmacro.h" "object.c" "adlist.c" "redis-cli" "sdsalloc.h" "rax.c" "sha1.h" "anet.o" "ae.c" "rax.h" "ae.o" "memtest.c" ".make-settings" "testhelp.h" "sentinel.c" "redis-check-rdb.o" "geo.o" "redisassert.h" "geohash.o" "childinfo.c" "sort.c" "blocked.c" "rax.o" "notify.c" "t_string.o" "rand.h" "lzfP.h" "release.c" "slowlog.c" "slowlog.h" "cluster.c" "pqsort.o" "sds.o" "t_set.o" "redis-sentinel" "networking.o" "evict.o" "setproctitle.o" "scripting.c" "zipmap.o" "release.o" "geohash_helper.h" "help.h" "endianconv.o" "rio.o" "debug.o" "defrag.o" "bitops.o" "defrag.c" "cluster.o" "valgrind.sup" "module.o" "redis-check-aof" "dict.c" "intset.c" "aof.c" "dict.o" "scripting.o" "syncio.c" "lazyfree.o" "rax_malloc.h" "redis-check-aof.c" "server.o" "multi.c" "redis-server" "Makefile.dep" "sort.o" "redis-check-rdb.c" "adlist.h" ".gitignore" "util.o" "zmalloc.h" "expire.c" "config.c" "solarisfixes.h" "server.c" "bio.c" "syncio.o" "db.o" "lzf.h" "lzf_c.o" "t_zset.o" "sha1.o" ".make-prerequisites" "quicklist.c" "childinfo.o" "sds.h" "slowlog.o" "redis-check-aof.o" "debug.c" "zipmap.c" "crc64.h" "asciilogo.h" "./" "bio.h" "crc64.c" "intset.h" "rdb.o" "fmacros.h" "memtest.o" "t_string.c" "replication.o" "rdb.h" "quicklist.h" "pqsort.h" "t_list.c" "db.c" "pubsub.o" "t_hash.c" "geo.h" "zipmap.h" "ae_kqueue.c" "../" "sparkline.o" "crc16.c" "redis-cli.o" "ae_evport.c" "zmalloc.o" "sparkline.c" "mkreleasehdr.sh" "Makefile" "util.c" "zmalloc.c" "bio.o" "geohash_helper.c" "modules/" "adlist.o" "multi.o" "geo.c" "evict.c" "latency.c" "config.h" "rand.o" "config.o" "redis-check-rdb" "siphash.o" "rand.c" "endianconv.h" "util.h" "lazyfree.c" "sentinel.o" "version.h" "dict.h" "redis-cli.c" "ae_select.c" "blocked.o" "ziplist.o" "quicklist.o" "ae.h" "t_hash.o" "geohash_helper.o" "rio.h" "sha1.c" "redis-benchmark.c" "intset.o" "anet.c" "networking.c" "lzf_d.c" "geohash.c" "latency.o" "latency.h" "server.h" "bitops.c" "object.o" "ae_epoll.c" "rio.c" "redis-benchmark.o" "t_set.c" "sparkline.h" "pqsort.c" "hyperloglog.o" "t_zset.c" "ziplist.h" "expire.o" "replication.c" "endianconv.c" "lzf_c.c" "siphash.c" "rdb.c" "notify.o" "setproctitle.c" "redis-benchmark" "anet.h" "sds.c")
+
+ ("/home/zautomata/Opensource/hackspree/lib/hackspree/codejam/" (22965 45466 846991 312000) "indexer.rb" "crawler.rb" "service.rb" "solution.rb" "codejam.rb" "hosts/" "./" "../" "utils.rb")
+
+ ("/home/zautomata/repocode/mongoose/examples/simple_crawler/" (22977 2408 522202 667000) "#simple_crawler.c#" "./" "../" "Makefile" "simple_crawler" "simple_crawler.c")
+
+ ("/home/zautomata/Opensource/hackspree/lib/hackspree/" (22965 36620 280025 977000) "version.rb" "./" "whiteboard.rb" "../" "codejam/" "ircbot.rb")
+
+ ("/home/zautomata/Opensource/hackspree/lib/" (22965 36620 280025 977000) "hackspree.rb" "hackspree/" "./" "../")
+)
+
+;; ----- ido-unc-hosts-cache -----
+t
