@@ -49,12 +49,12 @@
                      ruby-electric
                      seeing-is-believing
                      ;;chruby ;;rbenv
-                     yasnippet           
+                     ;;yasnippet           
                      inf-ruby
                      ess
                      flycheck
                      company ;; https://company-mode.github.io/
-                     magit ;; one-thing-per-commit
+                     ;; magit ;; one-thing-per-commit
                      ;;magit-popup
                      git-timemachine ;; step forward and backward through the history of a file
                      highlight-indentation  ;;TODO require it and use it for python projects
@@ -190,8 +190,8 @@
 
 ;; yasnippet, docs: http://joaotavora.github.io/yasnippet/
 ;;TODO create some custom org-snippet for note-taking
-(require 'yasnippet)
-(yas-global-mode 1)
+;;(require 'yasnippet)
+;;(yas-global-mode 1)
 
 ;; openwith for opening files in their respective external programs
 (require 'openwith)
@@ -537,6 +537,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (neotree origami s dash-functional org-fstree ruby-test-mode elfeed mew pos-tip org-pomodoro robe openwith highlight-indentation git-timemachine company flycheck ess inf-ruby seeing-is-believing ruby-electric restart-emacs key-chord evil smart-compile color-theme-modern better-defaults)))
  '(safe-local-variable-values
    (quote
     ((eval progn
