@@ -106,3 +106,7 @@ function myip() {
 #
 s() { pwd > ~/.save_dir ; }
 i() { cd "$(cat ~/.save_dir)" ; }
+
+# quickly test c sourcefile 
+#alias t='clang $1 && ./a.out && rm -f a.out'
+alias c='clang $1'
