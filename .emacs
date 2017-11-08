@@ -25,6 +25,7 @@
                          ("melpa" . "https://melpa.org/packages/")
                          ("marmalade" . "http://marmalade-repo.org/packages/")))
 
+
 ;; activate all the packages (in particular autoloads)
 (package-initialize)
 
@@ -95,6 +96,7 @@
             (define-key evil-normal-state-local-map (kbd "SPC") 'neotree-quick-look)
             (define-key evil-normal-state-local-map (kbd "q") 'neotree-hide)
             (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
 
 ;;(evil-define-key 'normal neotree-mode-map (kbd "TAB") 'neotree-enter)
 ;;(evil-define-key 'normal neotree-mode-map (kbd "SPC") 'neotree-quick-look)
@@ -172,8 +174,6 @@
 (enable-theme 'blue-mood)
 
 
-
-
 ;; flycheck
 ;; ref: http://www.flycheck.org/  
 (require 'flycheck)
@@ -248,14 +248,18 @@
 
 
 ;; EightyColumnRule
+;; openbsd mailing list 72col rule
+;; my own safe-side clean code 70col rule
 ;; https://www.emacswiki.org/emacs/EightyColumnRule
 (add-hook 'text-mode-hook 'auto-fill-mode)
-(setq-default fill-column 80)
+;;(setq-default fill-column 80)
+(setq-default fill-column 70)
 ;; free of trailing whitespace and to use 80-column width, standard indentations
 (require 'whitespace)
 (setq whitespace-style '(trailing lines space-before-tab
                                   indentation space-after-tab)
-      whitespace-line-column 80)
+      ;;whitespace-line-column 80)
+      whitespace-line-column 70)
 ;;(setq whitespace-line-column 80) ;; limit line length
 (setq whitespace-style '(face lines-tail))
 (add-hook 'prog-mode-hook 'whitespace-mode)
@@ -523,13 +527,14 @@
 (setq scroll-conservatively 9001)
 
 ;; This instructs emacs to store the auto-saves inside the auto-save folder in the user-emacs-directory (usually ~/.emacs.d).
-(setq auto-save-file-name-transforms
-                `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+;;(setq auto-save-file-name-transforms
+;;                `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
 
 ;; emacs font
-(set-frame-font "Inconsolata-18");
+;;(set-frame-font "Inconsolata-18"); use ibm
 ;; server-start 
-(server-start)
+;;(server-start)
+(split-window-horizontally)
 
 ;;; .emacs ends here
 (custom-set-variables
