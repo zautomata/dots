@@ -526,9 +526,16 @@
 ;; to scroll a single line at a time
 (setq scroll-conservatively 9001)
 
+<<<<<<< HEAD
 ;; This instructs emacs to store the auto-saves inside the auto-save folder in the user-emacs-directory (usually ~/.emacs.d).
 ;;(setq auto-save-file-name-transforms
 ;;                `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+=======
+;; This instructs emacs to store the auto-saves inside the auto-save folder in
+;; the user-emacs-directory (usually ~/.emacs.d).
+;; (setq auto-save-file-name-transforms
+;; `((".*" ,(concat user-emacs-directory "auto-save/") t))) 
+>>>>>>> 9d7fa4f63fd852e17a211c0b838686404a1e39f2
 
 ;; emacs font
 ;;(set-frame-font "Inconsolata-18"); use ibm
