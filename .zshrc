@@ -7,7 +7,8 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #export ZSH_THEME="robbyrussell"
 #ZSH_THEME="zanshin"
-export ZSH_THEME="agnoster" # (this is one of the fancy ones)
+#export ZSH_THEME="agnoster" # (this is one of the fancy ones)
+export ZSH_THEME="bira" # (this is one of the fancy ones)
 
 # Set to this to use case-sensitive completion
 # export CASE_SENSITIVE="true"
@@ -108,5 +109,5 @@ s() { pwd > ~/.save_dir ; }
 i() { cd "$(cat ~/.save_dir)" ; }
 
 # quickly test c sourcefile 
-alias t='cc $1 && ./a.out && rm -f a.out'
-alias c='clang $1'
+alias 't=cc $1 && ./a.out && rm -f a.out'
+alias 'c=clang $1'
