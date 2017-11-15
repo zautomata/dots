@@ -9,7 +9,7 @@ Weechat
 /set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies"
 
 
-For ksh on BSD `export PS1='$HOSTNAME ╭─${PWD})\n ╰─$ '` this will show current dir
+For ksh on BSD `export PS1='$HOSTNAME ╭─${PWD}\n ╰─$ '` this will show current dir
 
 ref: http://gongzhitaao.org/orgcss/ (related to making teh blog pretty)
 ref: https://pavpanchekha.com/blog/org-mode-publish.html
