@@ -418,7 +418,8 @@
 ;;(set-frame-font "Inconsolata-18"); use ibm
 ;; server-start 
 ;;(server-start)
-(split-window-horizontally)
+;;(split-window-horizontally)
+(split-window-vertically)
 
 ;; knf starts
 
