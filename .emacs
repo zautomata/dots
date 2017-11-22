@@ -18,10 +18,9 @@
 ;; list the packages you want
 (setq package-list '(better-defaults
                      ;;green-screen-theme
-                     ;;green-phosphor-theme
                      ;;blue-mood
-                     color-theme-modern		     
-                     smart-compile 
+		     color-theme-modern		     
+		     smart-compile 
 		     autopair
                      ;;kooten-theme
                      ;;helm
@@ -162,8 +161,23 @@
               (delete-char trailnewlines)))))))
 
 ;; https://github.com/emacs-jp/replace-colorthemes
-(load-theme 'blue-mood t t)
-(enable-theme 'blue-mood)
+;;(load-theme 'blue-mood t t)
+;;(enable-theme 'blue-mood)
+;;(load-theme 'clarity t t)
+;;(enable-theme 'clarity)
+
+;;(load-theme 'goldenrod t t)
+;;(enable-theme 'goldenrod)
+
+;;(load-theme 'lawrence t t)
+;;(enable-theme 'lawrence)
+
+(load-theme 'matrix t t)
+(enable-theme 'matrix)
+
+
+
+
 
 ;; flycheck
 ;; ref: http://www.flycheck.org/  
@@ -637,4 +651,3 @@
 (autopair-global-mode 1)
 (setq autopair-autowrap t)
 
-;;; .emacs ends here
