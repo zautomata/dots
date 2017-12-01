@@ -112,4 +112,9 @@ i() { cd "$(cat ~/.save_dir)" ; }
 alias 't=cc $1 && ./a.out && rm -f a.out'
 alias 'c=clang $1'
 
-tmux
+
+tmux attach &> /dev/null
+
+if [[ ! $TERM =~ screen ]]; then
+	exec tmux
+fi
