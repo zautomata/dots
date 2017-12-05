@@ -402,12 +402,13 @@
 ;; http://www.pement.org/emacs_tabs.htm#one_thing
 ;; http://emacs.stackexchange.com/questions/24351/how-to-make-tab-key-shift-test-after-cursor-in-evil-mode-insert-state
 ;; (global-set-key (kbd "C-i") 'self-insert-command); 
-(setq-default indent-tabs-mode nil)
 ;;(define-key text-mode-map (kbd "<tab>") 'tab-to-tab-stop)
-(define-key text-mode-map (kbd "C-i") 'tab-to-tab-stop)
-(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
-                        64 68 72 76 80 84 88 92 96 100 104 108 112
-                        116 120))
+
+;;(setq-default indent-tabs-mode nil)
+;;(define-key text-mode-map (kbd "C-i") 'tab-to-tab-stop)
+;;(setq tab-stop-list '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60
+;;                        64 68 72 76 80 84 88 92 96 100 104 108 112
+;;                        116 120))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -651,3 +652,10 @@
 (autopair-global-mode 1)
 (setq autopair-autowrap t)
 
+
+;  I use the following with TERM=xterm-256color
+(set-face-foreground 'mode-line "#606060")
+;(set-face-background 'mode-line "#202020")
+(set-face-background 'mode-line "#3bb26f")
+(set-face-foreground 'mode-line-inactive "#606060")
+(set-face-background 'mode-line-inactive "#202020")
