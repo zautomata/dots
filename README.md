@@ -6,7 +6,13 @@ I used to use Emacs font
 However, now I prefer the old `IBM 3270 medium` font.
 
 Weechat
-/set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto"
+/set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
+
+/server add hackint irc.2600.net
+/set irc.server.2600.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
+
+/server add hackint irc.hackint.org:9999
+/set irc.server.hackint.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
 
 
 For ksh on BSD `export PS1='$HOSTNAME ╭── \u@\h ${PWD}\n ╰─$ '` this will show current dir
