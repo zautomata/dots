@@ -6,6 +6,7 @@ I used to use Emacs font
 However, now I prefer the old `IBM 3270 medium` font.
 
 Weechat
+<<<<<<< HEAD
 /set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
 
 /server add hackint irc.2600.net
@@ -13,6 +14,9 @@ Weechat
 
 /server add hackint irc.hackint.org:9999
 /set irc.server.hackint.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
+=======
+/set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#ubuntu-motu"
+>>>>>>> 15ab8a52c67c918bb2abe8b7e237f10c83a0b29d
 
 
 For ksh on BSD `export PS1='$HOSTNAME ╭── \u@\h ${PWD}\n ╰─$ '` this will show current dir
