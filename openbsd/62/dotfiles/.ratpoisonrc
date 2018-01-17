@@ -1,0 +1,13 @@
+startup_message off
+escape Super_L
+definekey top M-Tab next
+
+bind f exec firefox
+bind m exec chrome
+bind t exec chrome --proxy-server="socks5://127.0.0.1:9999"
+bind x exec urxvt +sb -fn "xft:Inconsolata:pixelsize=19"
+bind r exec xterm -rv
+bind o exec soffice
+bind d exec audacity
+
+exec urxvt +sb -fn "xft:Inconsolata:pixelsize=19"

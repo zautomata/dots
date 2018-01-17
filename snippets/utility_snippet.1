@@ -1,0 +1,87 @@
+
+ISC License (ISC)
+https://opensource.org/licenses/ISC
+
+/*
+hackspree copyright BSD license
+
+HOW TO USE
+----
+This filter snippet is the only unit for building software
+applications and utilities, may be used to create two kinds of
+POSIX complied executables:
+
+1) Domain-specific App:
+Must do its thing via pipelines, that include any number of general
+purpose utilities.
+
+Pipelines may include:
+- Data Converters e.g. `jq `
+- Datastore Commands e.g. `redis-cli set mykey myvalue`
+- Datastore Queries e.g. `redis-cli get mykey`
+- General Purpose Utitilies
+
+2) General Purpose Utility:
+Utilities are self-contained code artifacts, that may never do its
+thing via pipelines, however may aquire its needed data via STDIN
+from other unix utilities.
+
+does a specific refinment
+
+This filter snippet follows the recommendations of the
+'Pipe and Filter pattern from the book of Archiectural software
+patterns, by that it encapsulates its operations into the following
+functions:
+- refine();
+- transform();
+- enrich();
+This not only exhibits a desired readability quality of all produced
+code artifacts but also helps -enforces- better design practices.
+
+By limiting code-artifacts reuse to two levels, technical debt is
+to remain reasonablly under control.
+
+In the regular software engineering scenario, communication with
+a Client should involve discussing:
+- No. of Domain-specific Apps
+- No. of Pipelines in each Domain-specific App
+- No. of General Purpose Utilities
+- DateStorage e.g. Redis
+- Logging Policies
+
+LOGGING SEVERITY LEVELS
+----
+0 Emergency     - emerg
+1 Alert         - alert
+2 Critical      - crit
+3 Error         - err
+4 Warning       - warning
+5 Notice        - notice
+6 Informational - info
+7 Debug         - debug
+
+INCODE DOCUMENTATION
+---
+Each pipeline should be thoroughly documented specifiying the its
+filters, error handling, and the output.
+
+MANUAL PAGES
+----
+see "man 7 mdoc" and "man 1 mandoc"
+ref: https://forums.freebsd.org/threads/13200/
+
+CODING STYLE9
+----
+man style
+
+TODO
+----
+- Write function prototypes
+*/
+
+/*
+Copyright
+`man filter_snippet` for more details
+OpenBSD Style9
+*/
+

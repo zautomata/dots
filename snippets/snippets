@@ -1,0 +1,46 @@
+#!/bin/ksh
+
+#
+# Copyright (c) 2018 Mohamed A. Fouad <zautomata@irc.hackspree.com>
+#
+# Permission to use, copy, modify, and distribute this software for any
+# purpose with or without fee is hereby granted, provided that the above
+# copyright notice and this permission notice appear in all copies.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+# WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+# ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+# WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+# ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+# OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+# 
+
+# allows user to search, and view all avalaiable snippets
+echo "this works as an apropos for snippets; it allows you to search via regex \
+snippet and then allows you to view its content or the content of the narrowed search \
+via a manpage documentation fo each snippet."
+
+echo -e "explore \c"
+
+while true
+do
+echo "-------------------"
+echo "| Search Snippets |"
+echo "___________________"
+echo " "
+echo `ls`
+
+echo -e "enter selection \c"
+read answer
+case $answer in
+   1) uptime ;;
+   2) ping googl.com ;;
+   q) exit ;;
+esac
+done
+
+# allows user to redirect snippet content into an ed buffer
+echo -e "cat \c"
+echo -e "from inside ed do something like `r !snippet id`
+echo -e "from inside ed do something like `r !snippet 1234`

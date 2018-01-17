@@ -8,7 +8,7 @@ However, now I prefer the old `IBM 3270 medium` font.
 Weechat
 
 /server add freenode irc.freenode.net
-/set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev,#pfsense-br,##not-a-honeypot,##freebsd-br,#csc,#dfsc,#ed"
+/set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev,#pfsense-br,##not-a-honeypot,##freebsd-br,#csc,#dfsc,#ed,#plan9,#suckless"
 
 /server add 2600 irc.2600.net
 /set irc.server.2600.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
