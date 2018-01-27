@@ -11,11 +11,13 @@ Weechat
 /set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev,#pfsense-br,##not-a-honeypot,##freebsd-br,#csc,#dfsc,#ed,#plan9,#suckless,#cat-v,#ccc"
 
 /server add 2600 irc.2600.net
-/set irc.server.2600.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev"
+/set irc.server.2600.autojoin "#2600es"
 
 /server add hackint irc.hackint.org:9999
-/set irc.server.hackint.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#ubuntu-motu"
+/set irc.server.hackint.autojoin "#ccc"
 
+/server add anonops irc.anonops.com/6697 -ssl 
+/set irc.anonops.com.autojoin "##c"
 
 For ksh on BSD `export PS1='$HOSTNAME ╭── \u@\h ${PWD}\n ╰─$ '` this will show current dir
 
