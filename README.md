@@ -7,6 +7,9 @@ However, now I prefer the old `IBM 3270 medium` font.
 
 Weechat
 
+/set irc.look.smart_filter on
+/set irc.look.smart_filter_delay 5
+/filter add irc_smart * irc_smart_filter *
 /server add freenode irc.freenode.net
 /set irc.server.freenode.autojoin "#glibc,#linux,#R,#awk,#regex,##c,#cjeopardy,#clang,#algorithms,#emacs,#gcj,##math,#openbsd,#openbsd-daily,#ruby,#perl,#python,#ksh,#redis,##kernel,##kernelnewbies,#pcre,#metasploit,##posix,#nethack,#nethack-dev,#ipfs,#devious,#freebsd,#netbsd,##crypto,#bitcoin-core-dev,#pfsense-br,##not-a-honeypot,##freebsd-br,#csc,#dfsc,#ed,#plan9,#suckless,#cat-v,#ccc"
 
